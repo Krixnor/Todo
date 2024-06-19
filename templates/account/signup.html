@@ -1,0 +1,72 @@
+{% extends "users/layout.html" %}
+
+{% load static %}
+{% load socialaccount %}
+
+{% block body %}
+
+<style>
+    *{
+        /* border: 1px solid red; */
+    }
+    label{
+        display: none;
+    }
+    form p{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    p{
+        margin-bottom: 0.1rem;
+    }
+
+    form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 70%;
+}
+</style>
+
+<div class="content">
+    <h3>Sign Up</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required> -->
+        <button type="submit" id="go">Sign Up</button>
+    </form>
+    <a href="{% url 'login' %}">Already have an account?</a>
+    <div class="or">
+        <hr>
+        <small id="or">or</small>
+        <hr>
+    </div>
+    
+    <div class="buttons">
+            <a href="{% provider_login_url 'google' %}" class="btn-google">
+                <button type="button">Google</button>
+            </a>
+        <button type="button">Facebook</button>
+        <!-- <button type="button">Email</button> -->
+        
+    </div>
+    
+</div>
+
+
+
+
+    {% endblock %}
+
+
+
+
+    <!-- {% load socialaccount %}
+{% providers_media_js %}
+<a href="{% provider_login_url "facebook" %}">Facebook Connect</a> -->

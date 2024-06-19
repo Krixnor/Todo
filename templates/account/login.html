@@ -1,0 +1,55 @@
+{% extends "users/layout.html" %}
+<!-- {% load i18n %}
+{% load allauth account %} -->
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<style>
+    *{
+        /* border: 1px solid red; */
+    }
+    label{
+        display: none;
+    }
+    p #id_remember{
+        display: none;
+        
+    }
+    form{
+        width: 70%;
+    }
+    form p{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0px;
+    }
+    
+    .helptext{
+        display: none;
+    }
+    /* p input{
+        display: flex;
+        flex-direction: column;
+    } */
+</style>
+
+
+<div class="content">
+    {% if message %}
+    <div> {{ message }} </div>
+    {% endif %}
+    <h3>Login</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- {{ form.password.as_p }} -->
+        <button type="submit" id="go">login</button>
+    </form>
+    <a href="{% url 'signup' %}">Don't have an account?</a>
+    
+</div>
+
+    {% endblock %}
