@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load socialaccount %}
+{% providers_media_js %}
 
 {% block body %}
 
@@ -52,7 +53,10 @@
             <a href="{% provider_login_url 'google' %}" class="btn-google">
                 <button type="button">Google</button>
             </a>
-        <button type="button">Facebook</button>
+            <a href="{% provider_login_url 'facebook' %}">
+                <button type="button">Facebook</button>
+            </a>
+        
         <!-- <button type="button">Email</button> -->
         
     </div>
