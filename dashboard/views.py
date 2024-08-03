@@ -28,6 +28,7 @@ def tasks(request):
             data = json.loads(request.body)
             #get title and assign to a variable
             title = data.get('title')
+            title = title.title()
             try:
                 #create a new entry
                 todo = Todo.objects.create(title=title,user=request.user)

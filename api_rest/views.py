@@ -1,3 +1,6 @@
+# Note: Rest API can be used to carry out same operation
+
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required 
 from django.http import JsonResponse
