@@ -286,7 +286,7 @@ function edit(item){
 function deleteItem(item){
     console.log('deleted')
     
-    fetch(`http://localhost:8000/apis/task/${item.id}`, {
+    fetch(`taskUpdate/${item.id}/`, {
         method:'DELETE',
         headers: {
                 "Content-Type": "application/json",
@@ -303,7 +303,7 @@ function deleteItem(item){
 function doUndo(item){
     console.log('striked')
     item.completed = !item.completed
-    fetch(`http://localhost:8000/apis/task/${item.id}`, {
+    fetch(`taskUpdate/${item.id}/`, {
         method:'POST',
         headers: {
                 "Content-Type": "application/json",
