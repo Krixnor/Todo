@@ -32,7 +32,7 @@ urlpatterns = [
     path('account/login/', views.log, name='login'), 
     path('account/index/', views.index, name='index'), 
     
-    path('apis/', include('api_rest.urls')),
+    # path('apis/', include('api_rest.urls')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
