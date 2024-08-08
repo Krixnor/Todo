@@ -105,7 +105,6 @@
     {% endif %}
     <div class="row mx-auto">
         
-        
             <div class="col-md-10 mx-auto mb-3" id="workspace">
                 <h1 class="text-center">To-do List</h1>
                 <form action="" method="POST" id="task-form">
@@ -151,19 +150,13 @@
         
         .then(data => {
             let list = data
-            if(list == null){
-                let item = `<div class='empty'>
-                       <h4>No Tasks Yet</h4>
-                    </div>`
-                taskContainer.innerHTML += item
-            }
             console.log(list)
             
             for (var i in list){
                 let title = `<span class="title">${list[i].title} </span> `
 
                 if (list[i].completed == true){
-                    title = `<strike class="title">${list[i].title} </strike>`
+                    title = `<del class="title">${list[i].title} </del>`
                 }
                 let item = `<div id='data-row-${i}' class='task-wrapper flex-wrapper d-flex justify-content-center align-items-center'>
                     <div style='flex:7'>
