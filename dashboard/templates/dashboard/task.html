@@ -138,6 +138,7 @@
     let taskList = document.querySelector('#tasks');
     let taskContainer = document.querySelector('#tasksContainer')
     taskContainer.innerHTML = ''
+
   
     // var url = 'http://localhost:8000/apis/tasks'
     fetch('all')
@@ -192,6 +193,7 @@
                 deleteBtn.addEventListener('click',(function(item){
                     return function(){
                         deleteItem(item)
+                        deleteBtn.disabled=true
                     }
                 })(list[i]))
 
@@ -223,6 +225,7 @@
         }
        
         let task = document.querySelector('#title').value 
+        taskForm.reset()
         console.log(task)
         fetch(url,{
             method:"POST",
@@ -240,8 +243,10 @@
         })
 
         .then(response =>{
+            taskForm.reset()
             listItems()
-            document.querySelector('#task-form').reset()
+            // document.querySelector('#submit').disabled=true
+            // document.querySelector('#task-form').reset()
         })
 
         .catch(error => {
@@ -289,6 +294,7 @@ function deleteItem(item){
 
     })
     .then(response =>{
+        taskForm.reset()
         listItems()
     })
 }
@@ -307,6 +313,7 @@ function doUndo(item){
 
     })
     .then(response =>{
+        taskForm.reset()
         listItems()
     })
 

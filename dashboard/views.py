@@ -57,11 +57,15 @@ def task_detail(request,pk):
                 return JsonResponse({'error': str(e)}, status=500)
             
         if request.method == 'DELETE':
-             task.delete()
-             return JsonResponse(status=204)
+             if task is None:
+                  return JsonResponse({'error': 'Not found'}, status=404)
+             else:
+                task.delete()
+                return JsonResponse({'message': 'successfully deleted'}, status=204)
         
         else:
-            return JsonResponse({'error': 'Bad request'}, status=400)
+             pass
+            # return JsonResponse({'error': 'Bad request'}, status=400)
    
 
              
