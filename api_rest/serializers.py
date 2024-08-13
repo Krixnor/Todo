@@ -1,8 +1,8 @@
-from rest_framework import serializers
+# from rest_framework import serializers
 
-from dashboard.models import Todo
+# from dashboard.models import Todo
 
-class TaskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Todo
-        fields = '__all__'
+# class TaskSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Todo
+#         fields = '__all__'

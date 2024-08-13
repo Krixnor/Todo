@@ -21,7 +21,7 @@ def dash(request):
 
 def tasks(request):
     if request.method == 'GET':
-        tasks = Todo.objects.filter(user=request.user).values('id','title').order_by('-date_posted')
+        tasks = Todo.objects.filter(user=request.user).values('id','title','completed').order_by('-date_posted')
         return JsonResponse(list(tasks),safe=False)
     if request.method == 'POST':
             #loads string from data gotten from client side 
@@ -34,6 +34,7 @@ def tasks(request):
                 todo = Todo.objects.create(title=title,user=request.user)
                 return JsonResponse({"success":True,"message":"created"})
             except Exception as e:
+                print(e)
                 return JsonResponse({"error":str(e)})
 
 
@@ -51,10 +52,16 @@ def task_detail(request,pk):
                 data = json.loads(request.body)
                 #update the old title with the new one
                 task.title = data['title']
+                task.completed = data['completed']
+              
+               
                 task.save()
+                
                 return JsonResponse({'message': 'Todo updated successfully'})
             except Exception as e:
+                print('this:',e)
                 return JsonResponse({'error': str(e)}, status=500)
+                
             
         if request.method == 'DELETE':
              if task is None:

@@ -41,9 +41,20 @@ def sign(request):
 def log(request):
     form = UserLogForm()
     if request.method == 'POST':
-        username = request.POST['username']
+        username_or_email = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+
+         # Check if the provided input is an email
+        is_email = '@' in username_or_email
+
+         # If it's an email, try to authenticate using email
+        if is_email:
+            user = authenticate(request, username=User.objects.get(email=username_or_email), password=password)
+        else:
+            # If it's not an email, try to authenticate using username
+            user = authenticate(request, username=username_or_email, password=password)
+
+       
         if user is not None:
             login(request, user)
             return redirect('task-list') 
