@@ -112,7 +112,9 @@
     <div class="row mx-auto">
         
             <div class="col-md-10 mx-auto mb-3" id="workspace">
-                <h1 class="text-center">To-do List</h1>
+                <div class="img">
+                    <img src="{% static 'img/cover.png' %}" alt="" style="width:25rem;">
+                </div>
                 <form action="" method="POST" id="task-form">
                     {% csrf_token %}
                     <div class="input">
