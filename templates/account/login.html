@@ -41,6 +41,11 @@
     {% if message %}
     <div> {{ message }} </div>
     {% endif %}
+
+    <div class="img">
+        <img src="{% static 'img/logo.png' %}" alt="" style="width:5rem;">
+    </div>
+    
     <h3>Login</h3>
     <form action="" method="post">
         {% csrf_token %}
